@@ -6,7 +6,10 @@ export default class extends React.Component {
 
     constructor() {
         super();
-        this.state = store.getState();
+        // this.state = store.getState();
+        this.state = {
+            registryItems: []
+        }
     }
 
     componentWillMount () {
@@ -14,8 +17,17 @@ export default class extends React.Component {
     }
 
     render() {
+        let index = 0;
         return (
             <div>
+                <h1>My Registry</h1>
+                    {
+                        this.state.registryItems.map(item =>
+                            <RegistryItem key={item.id} itemDetails={item}/>
+                        )
+                    }
+
+                
             </div>
         );
     }
